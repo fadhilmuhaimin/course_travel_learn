@@ -15,8 +15,9 @@ class DestinationRepositoryImpl implements DestinationRepository {
   final DestinationLocalDataSource destinationLocalDataSource;
   final DestinationRemoteDataSource destinationRemoteDataSource;
 
-  DestinationRepositoryImpl(this.networkInfo, this.destinationLocalDataSource,
-      this.destinationRemoteDataSource);
+  DestinationRepositoryImpl({required this.networkInfo, required this.destinationLocalDataSource, required this.destinationRemoteDataSource});
+
+  
 
   @override
   Future<Either<Failure, List<DestinationEntity>>> all() async {

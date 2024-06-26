@@ -2,7 +2,7 @@ import 'package:course_travel/features/destination/domain/repositories/destinati
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/destination_entity.dart';
+import '../entities/destination_entitiy.dart';
 
 class GetTopDestinationUseCase {
   final DestinationRepository _repository;

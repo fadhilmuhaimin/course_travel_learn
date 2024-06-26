@@ -1,8 +1,8 @@
+import 'package:course_travel/features/destination/domain/entities/destination_entitiy.dart';
 import 'package:course_travel/features/destination/domain/repositories/destination_repository.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
-import '../entities/destination_entity.dart';
 
 class SearchDestinationUseCase {
   final DestinationRepository _repository;

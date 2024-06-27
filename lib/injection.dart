@@ -17,6 +17,7 @@ import 'package:http/http.dart' as http;
 final locator = GetIt.instance;
 
 Future<void> initLocator() async{
+  
   //bloc
   locator.registerFactory(() => AllDestinationBloc(locator()));
   locator.registerFactory(() => SearchDestinationBloc(locator()));

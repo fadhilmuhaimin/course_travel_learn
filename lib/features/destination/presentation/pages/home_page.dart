@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:course_travel/features/destination/presentation/bloc/top_destination/top_destination_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -87,21 +88,32 @@ class _HomePageState extends State<HomePage> {
   search() {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.grey[300]!
-        ),
-        borderRadius: BorderRadius.circular(30)
-      ),
+          border: Border.all(color: Colors.grey[300]!),
+          borderRadius: BorderRadius.circular(30)),
+          width: 1,
       margin: EdgeInsets.symmetric(horizontal: 30),
-      child: Row(children: [
-        TextField(
-          decoration: InputDecoration(
-            isDense: true,
-            border: InputBorder.none,
-            hintText: 'Search Destination here'
+      padding: EdgeInsets.only(left: 24),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                isDense: true,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(0),
+                hintText: 'Search Destination here',
+                hintStyle:
+                    TextStyle(color: Colors.grey, fontWeight: FontWeight.w400),
+              ),
+            ),
           ),
-        )
-      ],),
+          SizedBox(width: 10,),
+          IconButton.filledTonal(
+            onPressed: () {},
+            icon: Icon(Icons.search, size: 24),
+          )
+        ],
+      ),
     );
   }
 

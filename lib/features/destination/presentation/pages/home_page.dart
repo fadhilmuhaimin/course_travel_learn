@@ -118,8 +118,40 @@ class _HomePageState extends State<HomePage> {
   }
 
   categories() {
-    return SizedBox(
-      height: 10,
+    List list = [
+      'Beach',
+      'Lake',
+      'Mountain',
+      'Forest',
+      'City',
+    ];
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: List.generate(list.length, (index) {
+          return Padding(
+            padding: EdgeInsets.only(
+              left: index == 0 ? 30 : 10,
+              right: index == list.length-1 ? 30 : 10,
+              bottom: 10,
+              top: 4
+            ),
+            child: Material(
+              color: Colors.white,
+              elevation: 4,
+              shadowColor: Colors.grey[300],
+              borderRadius: BorderRadius.circular(30),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6,horizontal: 16),
+                child: Text(
+                  list[index],
+                  style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+          );
+        }),
+      ),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:course_travel/common/app_route.dart';
 import 'package:course_travel/features/destination/presentation/bloc/all_destination/all_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/search_destination/search_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/top_destination/top_destination_bloc.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(),
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: 'a',
+        initialRoute: AppRoute.dashboard,
+        onGenerateRoute: AppRoute.onGenerateRoute,
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
     );

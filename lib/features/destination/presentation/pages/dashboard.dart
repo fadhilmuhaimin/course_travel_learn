@@ -21,19 +21,22 @@ class Dashboard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 14),
                 child: NavigationBar(
                       selectedIndex: state,
+                      onDestinationSelected: (value) {
+                        context.read<DashboadCubit>().change(value);
+                      },
                       backgroundColor: Colors.white,
                       surfaceTintColor: Theme.of(context).scaffoldBackgroundColor,
                       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
                         destinations: context.read<DashboadCubit>().menuDashboard.map((e) {
                   return NavigationDestination(
                     icon: Icon(
-                      e[0],
+                      e[1],
                       color: Colors.grey[500],
                     ),
                     label: e[0],
                     tooltip: e[0],
                     selectedIcon: Icon(
-                      e[0],
+                      e[1],
                       color: Theme.of(context).primaryColor,
                     ),
                   );

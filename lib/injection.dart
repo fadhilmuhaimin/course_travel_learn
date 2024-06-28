@@ -16,25 +16,29 @@ import 'package:http/http.dart' as http;
 
 final locator = GetIt.instance;
 
-Future<void> initLocator() async{
-  
+Future<void> initLocator() async {
   //bloc
   locator.registerFactory(() => AllDestinationBloc(locator()));
   locator.registerFactory(() => SearchDestinationBloc(locator()));
   locator.registerFactory(() => TopDestinationBloc(locator()));
 
   //usecase
-  locator.registerLazySingleton(()=> GetAllDestinationUseCase(locator()));
-  locator.registerLazySingleton(()=> SearchDestinationUseCase(locator()));
-  locator.registerLazySingleton(()=> GetTopDestinationUseCase(locator()));
+  locator.registerLazySingleton(() => GetAllDestinationUseCase(locator()));
+  locator.registerLazySingleton(() => SearchDestinationUseCase(locator()));
+  locator.registerLazySingleton(() => GetTopDestinationUseCase(locator()));
 
   //repository
-  locator.registerLazySingleton<DestinationRepository>(()=> DestinationRepositoryImpl(networkInfo: locator(), destinationLocalDataSource: locator(), destinationRemoteDataSource: locator()));
-
+  locator.registerLazySingleton<DestinationRepository>(() =>
+      DestinationRepositoryImpl(
+          networkInfo: locator(),
+          destinationLocalDataSource: locator(),
+          destinationRemoteDataSource: locator()));
 
   //dataSource
-  locator.registerLazySingleton<DestinationLocalDataSource>(() => DestinationLocalDataSourceImpl(locator()));
-  locator.registerLazySingleton<DestinationRemoteDataSource>(() => DestinationRemoteDataSourceImpl(locator()));
+  locator.registerLazySingleton<DestinationLocalDataSource>(
+      () => DestinationLocalDataSourceImpl(locator()));
+  locator.registerLazySingleton<DestinationRemoteDataSource>(
+      () => DestinationRemoteDataSourceImpl(locator()));
 
   //platform
   locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
@@ -42,6 +46,6 @@ Future<void> initLocator() async{
   //external
   final pref = await SharedPreferences.getInstance();
   locator.registerLazySingleton(() => pref);
-  locator.registerLazySingleton(() => http.Client);
+  locator.registerLazySingleton(() => http.Client());
   locator.registerLazySingleton(() => Connectivity());
 }

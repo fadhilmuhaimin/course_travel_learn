@@ -9,9 +9,6 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: context.watch<DashboadCubit>().page,
-      // BlocBuilder<DashboadCubit,int>(builder: (context, state) {
-        // return context.watch<DashboadCubit>().page;
-      // },),
         bottomNavigationBar: Material(
           elevation: 10,
           child: BlocBuilder<DashboadCubit, int>(

@@ -17,7 +17,6 @@ class DestinationRepositoryImpl implements DestinationRepository {
 
   DestinationRepositoryImpl({required this.networkInfo, required this.destinationLocalDataSource, required this.destinationRemoteDataSource});
 
-  
 
   @override
   Future<Either<Failure, List<DestinationEntity>>> all() async {
@@ -41,7 +40,6 @@ class DestinationRepositoryImpl implements DestinationRepository {
       }on CachedException {
         return Left(const CachedFailure('Data is not present'));
       }
-      
 
     }
   }

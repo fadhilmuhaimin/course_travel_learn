@@ -9,12 +9,12 @@ part 'top_destination_state.dart';
 class TopDestinationBloc extends Bloc<TopDestinationEvent, TopDestinationState> {
   final GetTopDestinationUseCase _useCase;
   TopDestinationBloc(this._useCase) : super(TopDestinationInitial()) {
-    on<OnTopDestinationEvent>((event, emit) async {
+    on<OnGetTopDestination>((event, emit) async {
       emit(TopDestinationLoading());
       final result = await _useCase();
       result.fold(
-        (failure) => TopDestinationFailure(failure.message),
-        (data) => TopDestinationLoaded(data));
+        (failure) => emit(TopDestinationFailure(failure.message)),
+        (data) => emit(TopDestinationLoaded(data)));
     });
   }
 }
